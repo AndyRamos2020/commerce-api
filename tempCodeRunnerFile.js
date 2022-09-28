@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const { conectDB } = require("./db/database.js");
-const { config } = require("./config/config.js");
+const { conectDB } = require("./config/db.js");
 require("dotenv").config();
 
 const app = express();
@@ -9,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json({ extended: true }));
 
-const PORT = config.port;
+const PORT = process.env.PORT || 3000;
 
 app.use("/product", require("./router/products.js"));
 app.use("/auth", require("./router/auth.js"));

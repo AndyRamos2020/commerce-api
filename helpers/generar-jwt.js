@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-require("dotenv").config();
+const { config } = require("../config/config");
 
 const generarJWT = (uid = "") => {
   return new Promise((resolve, reject) => {
@@ -7,7 +7,7 @@ const generarJWT = (uid = "") => {
 
     jwt.sign(
       payload,
-      process.env.JWT_SECRET,
+      config.jwt,
       {
         expiresIn: "4h",
       },
